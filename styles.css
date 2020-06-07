@@ -1,0 +1,56 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #cccccc;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+header {
+    margin-top: 40px;
+}
+
+main {
+    margin-bottom: 40px;
+}
+
+.wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px 40px;
+    background-color: #ffffff;
+}
+
+.file {
+    display: flex;
+    margin-bottom: 60px;
+}
+
+.file div {
+    flex-grow: 1;
+}
+
+.evaluation #bar-chart {
+    height: 800px;
+}
+
+
+.records-list, .evaluation {
+    padding-bottom: 20px;
+}
+
+
+.records-list table {
+    width: 100%;
+}
+
+.records-list table thead th {
+    text-align: left;
+}
+
+.records-list table tbody tr.disabled {
+    opacity: 0.4;
+}
+
+.records-list table tbody tr:hover {
+    background-color: #eeeeee;
+}

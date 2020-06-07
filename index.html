@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- moment.js is needed for date calculations -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
+
+    <!-- echarts is used for charts -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.8.0/echarts.min.js"></script>
+    <script type="text/javascript" src="echarts-theme.js"></script>
+
+    <!-- Application styles and scripts -->
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="model.js"></script>
+    <script type="text/javascript" src="tim-evaluator.js"></script>
+
+    <!-- Initialize the application right when the window has loaded -->
+    <script>
+        window.addEventListener('load', () => {
+            const timEvaluator = new TimEvaluator();
+            timEvaluator.init();
+        });
+    </script>
+
+    <title>Tim Evaluator</title>
+</head>
+<body>
+<header>
+    <div class="wrapper">
+        <h1>Tim Evaluator</h1>
+        <p>
+            Visualizes <a href="https://tim.neat.software" target="_blank">"Tim" time tracker</a> records
+            and allows to fill gaps between tracked times
+        </p>
+    </div>
+</header>
+<main>
+    <div class="wrapper">
+        <div class="file">
+            <div class="file-input">
+                <h2>Import</h2>
+                <label>
+                    File to Import
+                    <input type="file" id="file-input">
+                </label>
+            </div>
+            <div class="views">
+                <h2>Views</h2>
+                <button id="show-evaluation-button">Evaluation</button>
+                <button id="show-records-button">Records</button>
+            </div>
+            <div class="file-output">
+                <h2>Export</h2>
+                <label>
+                    Assign gaps to
+                    <select id="gap-destination"></select>
+                </label>
+                <button id="export-button">Export</button>
+            </div>
+        </div>
+
+        <div class="evaluation">
+            <h2>Evaluation</h2>
+            <div id="bar-chart"></div>
+        </div>
+
+        <div class="records-list">
+            <h2>Records</h2>
+            <table id="records-table">
+                <thead>
+                <tr>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th>Duration</th>
+                    <th>Task</th>
+                    <th>Enabled?</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+</body>
+</html>
