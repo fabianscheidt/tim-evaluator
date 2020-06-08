@@ -226,7 +226,18 @@ class TimEvaluator {
         const option = {
             tooltip: {
                 trigger: 'axis',
-                axisPointer: { type: 'shadow' }
+                axisPointer: { type: 'shadow' },
+                formatter: (params, ticket, callback) => {
+                    let res = params.filter((param) => param.data > 0).map((param) => {
+                        const duration = Math.round(param.data * 60 * 60);
+                        let hours   = Math.floor(duration / 3600);
+                        let minutes = Math.floor((duration - (hours * 3600)) / 60);
+                        if (hours   < 10) { hours   = '0' + hours; }
+                        if (minutes < 10) { minutes = '0' + minutes; }
+                        return param.marker + ' ' + param.seriesName + ': ' + hours + ':' + minutes;
+                    });
+                    return res.join('<br>');
+                }
             },
             legend: {
                 data: []
