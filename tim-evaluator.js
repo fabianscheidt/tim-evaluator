@@ -23,7 +23,7 @@ class TimEvaluator {
         this.fileInput = document.querySelector('#file-input');
         this.gapDestination = document.querySelector('#gap-destination');
         this.recordsTable = document.querySelector('#records-table');
-        this.barChart = echarts.init(document.querySelector('#bar-chart'), 'infographic');
+        this.barChart = echarts.init(document.querySelector('#bar-chart'), 'tim-evaluator');
         this.tabs = [
             document.querySelector('.evaluation'),
             document.querySelector('.records-list')

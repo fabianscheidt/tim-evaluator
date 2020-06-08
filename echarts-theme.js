@@ -20,9 +20,9 @@
     }
     
     var colorPalette = [
-        '#C1232B','#27727B','#FCCE10','#E87C25','#B5C334',
-        '#FE8463','#9BCA63','#FAD860','#F3A43B','#60C0DD',
-        '#D7504B','#C6E579','#F4E001','#F0805A','#26C0C0'
+        '#a0c63a','#009993','#343084','#a42384','#d32027',
+        '#fedb00','#17ad6d','#6b2b85','#bf2459','#e97924',
+        '#84be43','#028798','#572d85','#ad2572','#d94b27'
     ];
     
     var theme = {
@@ -32,12 +32,12 @@
         title: {
             textStyle: {
                 fontWeight: 'normal',
-                color: '#27727B'
+                color: '#000000'
             }
         },
         
         visualMap: {
-            color:['#C1232B','#FCCE10']
+            color:['#d32027','#fedb00']
         },
         
         toolbox: {
@@ -49,15 +49,15 @@
         },
         
         tooltip: {
-            backgroundColor: 'rgba(50,50,50,0.5)',
+            backgroundColor: 'rgba(50,50,50,0.8)',
             axisPointer : {
                 type : 'line',
                 lineStyle : {
-                    color: '#27727B',
+                    color: '#000000',
                     type: 'dashed'
                 },
                 crossStyle: {
-                    color: '#27727B'
+                    color: '#000000'
                 },
                 shadowStyle : {
                     color: 'rgba(200,200,200,0.3)'
@@ -68,13 +68,13 @@
         dataZoom: {
             dataBackgroundColor: 'rgba(181,195,52,0.3)',
             fillerColor: 'rgba(181,195,52,0.2)',
-            handleColor: '#27727B'
+            handleColor: '#000000'
         },
         
         categoryAxis: {
             axisLine: {
                 lineStyle: {
-                    color: '#27727B'
+                    color: '#000000'
                 }
             },
             splitLine: {
@@ -91,7 +91,7 @@
             },
             splitLine: {
                 lineStyle: {
-                    color: ['#ccc'],
+                    color: ['#000000'],
                     type: 'dashed'
                 }
             }
@@ -99,12 +99,12 @@
         
         timeline: {
             lineStyle: {
-                color: '#27727B'
+                color: '#000000'
             },
             controlStyle: {
                 normal: {
-                    color: '#27727B',
-                    borderColor: '#27727B'
+                    color: '#000000',
+                    borderColor: '#000000'
                 }
             },
             symbol: 'emptyCircle',
@@ -131,12 +131,12 @@
         candlestick: {
             itemStyle: {
                 normal: {
-                    color: '#C1232B',
-                    color0: '#B5C334',
+                    color: '#d32027',
+                    color0: '#84be43',
                     lineStyle: {
                         width: 1,
-                        color: '#C1232B',
-                        color0: '#B5C334'
+                        color: '#d32027',
+                        color0: '#84be43'
                     }
                 }
             }
@@ -150,7 +150,7 @@
             label: {
                 normal: {
                     textStyle: {
-                        color: '#C1232B'
+                        color: '#d32027'
                     }
                 },
                 emphasis: {
@@ -165,7 +165,7 @@
                     borderColor: '#eee'
                 },
                 emphasis: {
-                    areaColor: '#fe994e'
+                    areaColor: '#e97924'
                 }
             }
         },
@@ -173,7 +173,7 @@
         gauge: {
             axisLine: {
                 lineStyle: {
-                    color: [[0.2, '#B5C334'],[0.8, '#27727B'],[1, '#C1232B']]
+                    color: [[0.2, '#84be43'],[0.8, '#028798'],[1, '#d32027']]
                 }
             },
             axisTick: {
@@ -200,5 +200,5 @@
         }
     };
     
-    echarts.registerTheme('infographic', theme);
+    echarts.registerTheme('tim-evaluator', theme);
 }));
