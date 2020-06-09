@@ -9,6 +9,8 @@ class TimEvaluator {
         this.recordsTable = null;
         this.barChart = null;
         
+        this.viewsWrapper = null;
+        this.exportWrapper = null;
         this.tabs = [];
         this.visibleTab = 0;
         
@@ -24,6 +26,8 @@ class TimEvaluator {
         this.gapDestination = document.querySelector('#gap-destination');
         this.recordsTable = document.querySelector('#records-table');
         this.barChart = echarts.init(document.querySelector('#bar-chart'), 'tim-evaluator');
+        this.viewsWrapper = document.querySelector('.views');
+        this.exportWrapper = document.querySelector('.file-output')
         this.tabs = [
             document.querySelector('.evaluation'),
             document.querySelector('.records-list')
@@ -213,9 +217,15 @@ class TimEvaluator {
         this.updateRecordsList();
         this.updateExportList();
         
-        // Update the visible tab
+        // Update the visible tab. No tab is visible unless we have records
         this.tabs.forEach((tab) => tab.style.display = 'none');
-        this.tabs[this.visibleTab].style.display = 'block';
+        if (this.records.length > 0) {
+            this.tabs[this.visibleTab].style.display = 'block';
+        }
+        
+        // Hide views buttons and export if no record is present
+        this.viewsWrapper.style.display = this.records.length > 0 ? 'block' : 'none';
+        this.exportWrapper.style.display = this.records.length > 0 ? 'block' : 'none';
     }
     
     /**
