@@ -6,6 +6,7 @@ class TimEvaluator {
         this.records = [];
         this.fileInput = null;
         this.gapDestination = null;
+        this.csvSource = null;
         this.recordsTable = null;
         this.barChart = null;
         
@@ -24,6 +25,7 @@ class TimEvaluator {
         // Get DOM references
         this.fileInput = document.querySelector('#file-input');
         this.gapDestination = document.querySelector('#gap-destination');
+        this.csvSource = document.querySelector('#csv-source');
         this.recordsTable = document.querySelector('#records-table');
         this.barChart = echarts.init(document.querySelector('#bar-chart'), 'tim-evaluator');
         this.viewsWrapper = document.querySelector('.views');
@@ -38,6 +40,7 @@ class TimEvaluator {
         document.querySelector('#show-evaluation-button').addEventListener('click', () => this.showTab(0));
         document.querySelector('#show-records-button').addEventListener('click', () => this.showTab(1));
         document.querySelector('#export-button').addEventListener('click', () => this.export());
+        document.querySelector('#csv-export-button').addEventListener('click', () => this.exportCsv());
         
         // Initilize the view
         this.updateView();
@@ -187,6 +190,29 @@ class TimEvaluator {
         this.updateView();
     }
     
+    exportCsv() {
+        // Find selected task
+        const taskId = this.csvSource.value;
+        const task = this.tasks.find((task) => task.id === taskId);
+        
+        const res = task.records.map((record) => {
+            let row = [];
+            row.push('Doe, John')
+            row.push('john.doe@example.com')
+            row.push('')
+            row.push(moment(record.start).format('DD/MM/YYYY'))
+            row.push(moment(record.start).format('HH:mm'))
+            row.push(moment(record.end).format('HH:mm'))
+            row.push('')
+            row.push('0')
+            row = row.map(el => '"' + el.replace('"', '\"') + '"');
+            return row.join(',')
+        })
+        
+        const resCsv = res.join('\n');
+        this.downloadString(resCsv, 'text/csv', 'export.csv');
+    }
+    
     /**
      * Starts a file download of a text string
      *
@@ -319,12 +345,14 @@ class TimEvaluator {
      * Updates the selection in the export section
      */
     updateExportList() {
-        this.gapDestination.innerHTML = '';
-        for (const task of this.tasks) {
-            const option = document.createElement('option');
-            option.value = task.id;
-            option.innerText = task.title;
-            this.gapDestination.appendChild(option);
+        for (const dst of [this.gapDestination, this.csvSource]) {
+            dst.innerHTML = '';
+            for (const task of this.tasks) {
+                const option = document.createElement('option');
+                option.value = task.id;
+                option.innerText = task.title;
+                dst.appendChild(option);
+            }
         }
     }
 }
